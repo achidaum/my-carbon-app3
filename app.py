@@ -53,13 +53,14 @@ if st.button("ประเมินผลลัพธ์"):
     }
     carbon_transport = distance * ef_map[transport]
     
-    # 2. คำนวณคาร์บอนอาหาร
+    # 2. คำนวณคาร์บอนอาหาร (ปรับปรุง Logic ใหม่)
     food_carbon = 1.2
     food_category = "เนื้อสัตว์ทั่วไป (หมู/ไก่/ปลา/ไข่)"
     is_beef = False
     food_text = food_input.lower()
     
-    if "เนื้อวัว" in food_text:
+    # ตรวจสอบว่ามีคำว่า "เนื้อ" หรือ "เนื้อวัว" หรือไม่
+    if any(x in food_text for x in ["เนื้อวัว", "เนื้อ"]):
         food_carbon = 7.5
         food_category = "เนื้อวัว (ปศุสัตว์ขนาดใหญ่)"
         is_beef = True
